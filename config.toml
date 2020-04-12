@@ -1,5 +1,4 @@
-#baseurl         = "https://blog.ehabarman.com"
-baseurl         = ""
+baseurl         = "https://www.ehabarman.com"
 theme           = "casper-two"
 languageCode    = "en-US"
 disqusShortname = ""
