@@ -1,0 +1,61 @@
+baseurl         = "https://blog.ehabarman.com"
+theme           = "casper-two"
+languageCode    = "en-US"
+disqusShortname = ""
+paginate        = 6
+#SectionPagesMenu = "main"
+
+[params]
+  title       = "</ Ehab Arman >"
+  subtitle    = "Always Learn And Improve"
+
+  cover       = ""
+  description = "Blog containing my work and articles"
+  metaDescription = "Ehab Arman's blog"
+  googleAnalytics = ""
+  customCSS = []
+  RSSLink = ""
+
+  linkedinName = "ehab-arman-b4668b167"
+  fbName = "son.gohan.16547008"
+  githubName = "ehabarman"
+
+
+  logo = ""
+  orgName = ""
+  orgWebsite = ""
+  orgDescription = ""
+
+  author = "Ehab Arman"
+  authorAvatar = "img/ghost-icon.png"
+  authorLocation = "Palestine, ramallah"
+  authorWebsite = "https://github.com/ehabarman"
+  authorDescription = "I'm a software developer that enjoys learning and trying new technologies"
+
+  pageNotFoundTitle = "404 - Page not found"
+
+  #casper or caspertwo
+  singleViewStyle = "caspertwo"
+
+[permalinks]
+  post = "/:slug/"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 200
+
+[[menu.main]]
+  name = "Java"
+  url = "/categories/java/"
+  weight = 100
+
+[[menu.main]]
+  name = "Python"
+  url = "/categories/python/"
+  weight = 99
+
+[[menu.main]]
+  name = "Linux"
+  url = "/categories/linux/"
+  weight = 95
