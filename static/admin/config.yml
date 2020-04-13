@@ -7,7 +7,7 @@ public_folder: "uploads"
 
 collections:
   - name: "java"
-    label: "java
+    label: "java"
     folder: "content/java"
     create: true
     slug: "{{year}}-{{slug}}"
@@ -25,7 +25,7 @@ collections:
       - {label: Type, name: type, widget: hidden, default: "post"}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "python"
-    label: "python
+    label: "python"
     folder: "content/python"
     create: true
     slug: "{{year}}-{{slug}}"
@@ -43,7 +43,7 @@ collections:
       - {label: Type, name: type, widget: hidden, default: "post"}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "linux"
-    label: "linux
+    label: "linux"
     folder: "content/linux"
     create: true
     slug: "{{year}}-{{slug}}"
