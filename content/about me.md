@@ -15,4 +15,4 @@ If you are someone who is interested in different software topics and enjoy lear
 The blog content is aimed for those who has a minimum background about software development and has the passion and energy to learn more.
 
 # Bio
-I'm Ehab Arman, a software developer that enjoys learning and create neat things. Most of my projects are made mainly for self-learning & self-entertainment. As for this log, It was created in hope my experience prove to be helpful for others.
+I'm Ehab Arman, a software developer that enjoys learning and creating neat things. Most of my projects are made mainly for self-learning & self-entertainment. As for this log, it was created in hope that my experience prove to be helpful for others.
