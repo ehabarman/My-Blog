@@ -1,7 +1,7 @@
 ---
 title: Building Custom Desktop Notificatations for Gmail in Linux
 date: 2020-08-29T19:24:43.755Z
-draft: true
+draft: false
 categories: python
 tags:
   - Python
