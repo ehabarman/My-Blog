@@ -14,17 +14,17 @@ type: post
 ---
 Everyone has their preferences, emails are no exception for this rule -for me at least-. Unfortunately, I couldn't find a package or script to manage and customize my mail notifications. Therefore, I decided to built my own. This article is to explain how to build and customize a python script for Gmail notifications.
 
-## Installing required packages
+# Installing required packages
 
 ##### **note:** I'm using Ubuntu, so I will be using **apt** for installing packages.
 
-### libnotify-bin
+## libnotify-bin
 
 libnotify is a library that sends desktop notifications to a notification daemon. We will use "**notify-send**" to display our notifications on the desktop. In order to install it, run the following command in terminal:
 
 > `sudo apt install libnotify-bin`
 
-### Python & Python packages
+## Python & Python packages
 
 First we will need to install python, python version is up to you, I will be using python3:
 
@@ -38,9 +38,9 @@ Finally, we will need google api to work with gmail in python:
 
 > `pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib google-cloud-pubsub`
 
-## Building the script
+# Building the script
 
-### Gmail authorization
+## Gmail authorization
 
 We need to get authorization for our script. To do that:
 
@@ -52,7 +52,7 @@ The credentials.json contains details to get token for accessing your Gmail. Now
 
 >
 
-### Retrieving mails
+## Retrieving mails
 
 Now that we have created credentials with the required authorization, we can interact with Gmail and retrieve our mails:
 
