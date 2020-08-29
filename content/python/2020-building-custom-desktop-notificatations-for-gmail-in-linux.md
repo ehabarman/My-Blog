@@ -4,7 +4,7 @@ date: 2020-08-29T19:24:43.755Z
 draft: false
 categories: python
 tags:
-  - Python
+  - Python Linux
 author: Ehab Arman
 authorImage: ""
 image: uploads/gmail-email-notification.png
