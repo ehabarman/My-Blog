@@ -34,7 +34,7 @@ After you have installed Python, you will need to install PIP (package managemen
 
 > `sudo apt install python3-pip`
 
-Finally, we will need google API to work with Gmail in python:
+Finally, we will need google API to work with Gmail in Python:
 
 > `pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`
 
@@ -48,7 +48,7 @@ We need to get authorization for our script. To do that, we need to use google A
 * Click **Enable the Gmail API** then choose **Desktop app** and click create.
 * Download **credentials.json.**
 
-The **credentials.json** contains details to get token from google API. The token will be used in getting emails from your mail box. Now use it in the following script to generate the token, which will be used to access your mail:
+The **credentials.json** contains details to get token from google API. The token will be used in getting emails from your mail box. Now use it in the following script to generate the token, which will be used to access your email:
 
 > ```python
 > from google_auth_oauthlib.flow import InstalledAppFlow
@@ -79,7 +79,7 @@ The **credentials.json** contains details to get token from google API. The toke
 
 **Note:** The first token access will require you signing in via a link. The code snippet above will store that token in token.pickle file, which means you will need to do the sign in for the first time and from their the script will auto refresh the token for you.
 
-## Retrieving mails
+## Retrieving emails
 
 Now that we have created credentials with the required authorization, we can interact with Gmail and retrieve our new emails:
 
@@ -88,7 +88,7 @@ Now that we have created credentials with the required authorization, we can int
 > ```python
 > from googleapiclient.discovery import build
 >
-> MAIL_SUBJECT = 'snippet'
+> EMAIL_SUBJECT = 'snippet'
 > FOLDERS = ['INBOX']
 > MESSAGES_TOTAL = "messagesTotal"
 > WAIT_TIME = 30
@@ -115,7 +115,7 @@ Now that we have created credentials with the required authorization, we can int
 >     for mail in mails["messages"]:
 >         mail_id = mail['id']
 >         mail_details = service.users().messages().get(userId='me', id=mail_id).execute()
->         new_emails.append(mail_details[MAIL_SUBJECT])
+>         new_emails.append(mail_details[EMAIL_SUBJECT])
 >     return new_emails
 >
 > main()
@@ -129,6 +129,8 @@ In my case, I'm interested to be notified about only emails related to my work a
 
 Remember the `libnotify-bin` It is time to use it at last. Here is a very basic implementation of the `send_notifications` function:
 
+>
+>
 > ```python
 > ICON_PATH = '{}/gmail.png'.format(SCRIPT_DIR)
 > NOTIFICATION_SOUND = '/usr/share/sounds/ubuntu/stereo/message.ogg'
@@ -139,6 +141,8 @@ Remember the `libnotify-bin` It is time to use it at last. Here is a very basic 
 >         subprocess.call(['notify-send', '-i', str(ICON_PATH), '-t', str(WAIT_TIME * 1000), *[notification]])
 >         subprocess.call(['paplay', NOTIFICATION_SOUND])
 > ```
+>
+>
 
 The code snippet will send a pop notification to desktop that will last for 5 seconds, while at the same time, it will play a small audio.
 
@@ -146,7 +150,7 @@ Here, you can make the changes you desire. For example, I divided the emails I'm
 
 ## Making the script into a service
 
-At the end of the day, What we did so far is creating our notification script, but we still need to run it manually. There is more than a way to fix this. One of them it to make the script a cronjob, it will save you the trouble of running it and you can even remove the while loop and the sleep from the script since the cronjob will handle it for you.
+At the end of the day, What we did so far is creating our notification script, but we still need to run it manually. There is more than a way to fix this. One of them is it to make the script a Cronjob, it will save you the trouble of running it and you can even remove the while loop and the sleep from the script since the Cronjob will handle it for you.
 
 Another way to do it is to make the script into a service in the daemon. I will go with this one, since it has a little more steps you need to be aware of. Basically you will need to add the following service file to your daemon:
 
@@ -170,8 +174,8 @@ Since the notifications uses other system services like OS session & network. Yo
 
 If you desire to run the code periodically and get rid of the while loop and sleep from the script, then add the following file to your daemon:
 
-`custom_notifications.timer`
-
+> `custom_notifications.timer`
+>
 > ```editorconfig
 > [Unit]
 > Description=Gmail Notifications timer
