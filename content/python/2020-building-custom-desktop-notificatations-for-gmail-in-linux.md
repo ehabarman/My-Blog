@@ -12,29 +12,29 @@ comments: true
 share: true
 type: post
 ---
-Everyone has their preferences, emails are no exception to this -for me at least-. Unfortunately, I couldn't find a package or script to manage and customize my mail notifications. Therefore, I decided to build my own. This article is to explain how to build and customize a python script for Gmail notifications. I will show what you need to know and do, as for the full customization, it is up to your preferences.
+Everyone has their preferences, and emails are no exception to this(for me at least). Unfortunately, I couldn't find a package or script to manage and customize my mail notifications. Therefore, I decided to build my own. This article explains how to build and customize a python script for Gmail notifications. I will show what you need to know and do, as for the full customization, it is up to your preferences.
 
 # Installing required packages
 
-##### **note:** I'm using Ubuntu, so I will be using **apt** for installing packages.
+##### Note: I'm using Ubuntu, so I will be using apt for installing packages.
 
 ## libnotify-bin
 
-libnotify is a library that sends desktop notifications to a notification daemon. We will use "**notify-send**" to display our notifications on the desktop. In order to install it, run the following command in terminal:
+Libnotify is a library that sends desktop notifications to a notification daemon. We will use "**notify-send**" to display our notifications on the desktop. In order to install it, run the following command in terminal:
 
 > `sudo apt install libnotify-bin`
 
 ## Python & Python packages
 
-First we will need to install python, python version is up to you, I will be using python3:
+First we will need to install Python, Python version is up to you, I will be using python3:
 
 > `sudo apt install python3`
 
-After you have installed python, you will need to install PIP (package management system for software packages written in Python):
+After you have installed Python, you will need to install PIP (package management system for software packages written in Python):
 
 > `sudo apt install python3-pip`
 
-Finally, we will need google api to work with gmail in python:
+Finally, we will need google API to work with Gmail in python:
 
 > `pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`
 
@@ -44,11 +44,11 @@ Finally, we will need google api to work with gmail in python:
 
 We need to get authorization for our script. To do that, we need to use google API:
 
-* Go to: **https://developers.google.com/gmail/api/quickstart/python**
+* Go [here](https://developers.google.com/gmail/api/quickstart/python).
 * Click **Enable the Gmail API** then choose **Desktop app** and click create.
-* Download **credentials.json**
+* Download **credentials.json.**
 
-The credentials.json contains details to get token from google API. The token will be used in getting emails from your mail box. Now use it in the following script to generate the token, which will be used to access your mail:
+The **credentials.json** contains details to get token from google API. The token will be used in getting emails from your mail box. Now use it in the following script to generate the token, which will be used to access your mail:
 
 > ```python
 > from google_auth_oauthlib.flow import InstalledAppFlow
@@ -77,7 +77,7 @@ The credentials.json contains details to get token from google API. The token wi
 >     return credentials
 > ```
 
-**note:** The first token access will require you signing in via a link. The code snippet above will store that token in token.pickle file, which means you will need to do the sign in for the first time and from their the script will auto refresh the token for you.
+**Note:** The first token access will require you signing in via a link. The code snippet above will store that token in token.pickle file, which means you will need to do the sign in for the first time and from their the script will auto refresh the token for you.
 
 ## Retrieving mails
 
@@ -121,13 +121,13 @@ Now that we have created credentials with the required authorization, we can int
 > main()
 > ```
 
-If you noticed in the code above is getting all the new emails in the INBOX folder from the email every 30 seconds, the emails will be passed to `send_notifications(new_emails)`, which is responsible for sending the notifications to the desktop. This is not the most reliable or elegent way to do it, but it is simple enough for our purpose here. In this part, you can do some changes to match your preferences or need.
+If you noticed in the code above is getting all the new emails in the INBOX folder from the email every 30 seconds, the emails will be passed to `send_notifications(new_emails)`, which is responsible for sending the notifications to the desktop. This is not the most reliable or elegant way to do it, but it is simple enough for our purpose here. In this part, you can do some changes to match your preferences or need.
 
 In my case, I'm interested to be notified about only emails related to my work and from specific people, therefore, I usually filter the new emails by sender. In addition, I'm getting my emails from two Gmail accounts instead of one. Lastly, the notifications that I like to see should contains basic info about the sender and subject only.
 
 ## Displaying notifications
 
-Remember the `libnotify-bin?` It is time to use it at last. Here is a very basic implementation of the `send_notifications` function:
+Remember the `libnotify-bin` It is time to use it at last. Here is a very basic implementation of the `send_notifications` function:
 
 > ```python
 > ICON_PATH = '{}/gmail.png'.format(SCRIPT_DIR)
@@ -190,7 +190,7 @@ If you desire to run the code periodically and get rid of the while loop and sle
 
 ## Summary
 
-So far, we have discussed how to build gmail desktop notifications. Still, we can create and add many things that suits our work or preferences, all it takes is to spare some time and dedication to make our life easier and simpler.
+So far, we have discussed how to build Gmail desktop notifications. Still, we can create and add many things that suits our work or preferences, all it takes is to spare some time and dedication to make our life easier and simpler.
 
 I hope you are inspired to build your custom notifications and add your ideas. I enjoyed working, testing and writing about this topic. If you have some interesting ideas, let me know in the comments.
 
