@@ -76,8 +76,8 @@ The credentials.json contains details to get token from google API. The token wi
 >             pickle.dump(credentials, token)
 >     return credentials
 > ```
->
-> **note:** The first token access will require you signing in via a link. The code snippet above will store that token in token.pickle file, which means you will need to do the sign in for the first time and from their the script will auto refresh the token for you.
+
+**note:** The first token access will require you signing in via a link. The code snippet above will store that token in token.pickle file, which means you will need to do the sign in for the first time and from their the script will auto refresh the token for you.
 
 ## Retrieving mails
 
