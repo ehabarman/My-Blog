@@ -190,7 +190,7 @@ If you desire to run the code periodically and get rid of the while loop and sle
 
 ## Summary
 
-So far, we have discussed how to build Gmail desktop notifications. Still, we can create and add many things that suits our work or preferences, all it takes is to spare some time and dedication to make our life easier and simpler.
+So far, we have discussed how to build Gmail desktop notifications. Still, we can create and add many things that suit our work or preferences, all it takes is to spare some time and dedication to make our life easier and simpler.
 
 I hope you are inspired to build your custom notifications and add your ideas. I enjoyed working, testing and writing about this topic. If you have some interesting ideas, let me know in the comments.
 
