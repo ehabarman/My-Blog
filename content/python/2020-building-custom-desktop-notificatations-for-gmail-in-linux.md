@@ -83,6 +83,8 @@ The credentials.json contains details to get token from google API. The token wi
 
 Now that we have created credentials with the required authorization, we can interact with Gmail and retrieve our new emails:
 
+>
+>
 > ```python
 > from googleapiclient.discovery import build
 >
@@ -150,19 +152,19 @@ Another way to do it is to make the script into a service in the daemon. I will 
 
 `custom_notifications.service`
 
-```editorconfig
-[Unit]
-Description=Gmail Notifications
-After=systemd-user-sessions.service,systemd-journald.service
-
-[Service]
-ExecStart=/path/to/script/gmail-notifications
-Environment="DISPLAY=:0" "XAUTHORITY=/home/your_user/.Xauthority"
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-```
+> ```editorconfig
+> [Unit]
+> Description=Gmail Notifications
+> After=systemd-user-sessions.service,systemd-journald.service
+>
+> [Service]
+> ExecStart=/path/to/script/gmail-notifications
+> Environment="DISPLAY=:0" "XAUTHORITY=/home/your_user/.Xauthority"
+> RemainAfterExit=yes
+>
+> [Install]
+> WantedBy=multi-user.target
+> ```
 
 Since the notifications uses other system services like OS session & network. You will need to add them here before you start your service or it will fail at the start. Of course you can handle it in the script as well, but I prefer to keep my code clean and leave environment issue to the daemon.
 
@@ -170,17 +172,17 @@ If you desire to run the code periodically and get rid of the while loop and sle
 
 `custom_notifications.timer`
 
-```editorconfig
-[Unit]
-Description=Gmail Notifications timer
-
-[Timer]
-OnUnitActiveSec=30s
-OnBootSec=30s
-
-[Install]
-WantedBy=timers.target
-```
+> ```editorconfig
+> [Unit]
+> Description=Gmail Notifications timer
+>
+> [Timer]
+> OnUnitActiveSec=30s
+> OnBootSec=30s
+>
+> [Install]
+> WantedBy=timers.target
+> ```
 
 
 
