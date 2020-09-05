@@ -83,8 +83,6 @@ The **credentials.json** contains the information required to generate a token f
 
 Now that we have our authorization ready, we can interact with Gmail and retrieve our new emails. Check the following script, it will get check the email inbox for new mails and send notification if something is new:
 
->
->
 > ```python
 > from googleapiclient.discovery import build
 >
@@ -150,7 +148,7 @@ At the end of the day, What we did so far is creating our notification script, b
 
 Another way to do it is to make the script into a service in the daemon. I will go with this one, since it has a little more steps you need to be aware of. Basically you will need to add the following service file to your daemon:
 
-`custom_notifications.service`
+`gmail_notifications.service`
 
 > ```editorconfig
 > [Unit]
@@ -170,7 +168,7 @@ Since the notifications uses other system services like OS session & network. Yo
 
 If you desire to run the code periodically and get rid of the while loop and sleep from the script, then add the following file to your daemon:
 
-> `custom_notifications.timer`
+> `gmail_notifications.timer`
 >
 > ```editorconfig
 > [Unit]
