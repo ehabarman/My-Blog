@@ -42,13 +42,13 @@ Finally, we will need google API to work with Gmail in Python:
 
 ## Gmail authorization
 
-We need to get authorization for our script. To do that, we need to use google API:
+Before using Google Gmail APIs, we will need authorize our access first. To do that, we need to use google authorization, follow these steps:
 
 * Go [here](https://developers.google.com/gmail/api/quickstart/python).
 * Click **Enable the Gmail API** then choose **Desktop app** and click create.
 * Download **credentials.json.**
 
-The **credentials.json** contains details to get token from google API. The token will be used in getting emails from your mail box. Now use it in the following script to generate the token, which will be used to access your email:
+The **credentials.json** contains the information required to generate a token for google APIs, the token will be our way to authorize the access to the emails APIs. Now use the following script to generate the token using the **credentials.json**:
 
 > ```python
 > from google_auth_oauthlib.flow import InstalledAppFlow
@@ -81,7 +81,7 @@ The **credentials.json** contains details to get token from google API. The toke
 
 ## Retrieving emails
 
-Now that we have created credentials with the required authorization, we can interact with Gmail and retrieve our new emails:
+Now that we have our authorization ready, we can interact with Gmail and retrieve our new emails. Check the following script, it will get check the email inbox for new mails and send notification if something is new:
 
 >
 >
@@ -121,16 +121,14 @@ Now that we have created credentials with the required authorization, we can int
 > main()
 > ```
 
-If you noticed in the code above is getting all the new emails in the INBOX folder from the email every 30 seconds, the emails will be passed to `send_notifications(new_emails)`, which is responsible for sending the notifications to the desktop. This is not the most reliable or elegant way to do it, but it is simple enough for our purpose here. In this part, you can do some changes to match your preferences or need.
+If you noticed in the code above is getting all the new emails in the INBOX folder from the email every 30 seconds, the emails will be passed to `send_notifications(new_emails)`, which is responsible for sending the notifications to the desktop. This is not the most reliable or elegant way to do it, but it is simple enough for our demonstration. In this part, you can do some changes to match your preferences or needs.
 
 In my case, I'm interested to be notified about only emails related to my work and from specific people, therefore, I usually filter the new emails by sender. In addition, I'm getting my emails from two Gmail accounts instead of one. Lastly, the notifications that I like to see should contains basic info about the sender and subject only.
 
 ## Displaying notifications
 
-Remember the `libnotify-bin` It is time to use it at last. Here is a very basic implementation of the `send_notifications` function:
+Remember the `libnotify-bin`? It is time to use it at last. Here is a very basic usage of it in the `send_notifications` function:
 
->
->
 > ```python
 > ICON_PATH = '{}/gmail.png'.format(SCRIPT_DIR)
 > NOTIFICATION_SOUND = '/usr/share/sounds/ubuntu/stereo/message.ogg'
@@ -141,10 +139,8 @@ Remember the `libnotify-bin` It is time to use it at last. Here is a very basic 
 >         subprocess.call(['notify-send', '-i', str(ICON_PATH), '-t', str(WAIT_TIME * 1000), *[notification]])
 >         subprocess.call(['paplay', NOTIFICATION_SOUND])
 > ```
->
->
 
-The code snippet will send a pop notification to desktop that will last for 5 seconds, while at the same time, it will play a small audio.
+The code snippet will send a popup notification to desktop that will last for 5 seconds, while at the same time, it will play a small audio. The notification message will be the `notification` value in the loop.
 
 Here, you can make the changes you desire. For example, I divided the emails I'm interested in to 3 categories and assigned a different audio for each one. In addition, I added a different icon for each of them.
 
@@ -170,7 +166,7 @@ Another way to do it is to make the script into a service in the daemon. I will 
 > WantedBy=multi-user.target
 > ```
 
-Since the notifications uses other system services like OS session & network. You will need to add them here before you start your service or it will fail at the start. Of course you can handle it in the script as well, but I prefer to keep my code clean and leave environment issue to the daemon.
+Since the notifications uses other system services like OS session & network. You will need to make sure that our service is running after them otherwise it will fail at the start. Of course you can handle it in the script as well, but I prefer to keep my code clean and leave environment issue to the daemon.
 
 If you desire to run the code periodically and get rid of the while loop and sleep from the script, then add the following file to your daemon:
 
@@ -187,10 +183,6 @@ If you desire to run the code periodically and get rid of the while loop and sle
 > [Install]
 > WantedBy=timers.target
 > ```
-
-
-
-
 
 ## Summary
 
