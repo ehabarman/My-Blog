@@ -726,7 +726,7 @@ body {
 
 .post-card-image {
     width: auto;
-    height: auto;
+    height: 200px;
     background: #c5d2d9 no-repeat 50%;
     background-size: cover
 }
