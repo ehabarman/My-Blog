@@ -718,6 +718,8 @@ body {
 }
 
 .post-card-image-link {
+    width: auto;
+    height: auto;
     position: relative;
     display: block;
     overflow: hidden;
