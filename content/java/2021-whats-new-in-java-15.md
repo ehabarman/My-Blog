@@ -1,7 +1,7 @@
 ---
 title: What's new in Java 15
 date: 2021-03-30T21:43:11.799Z
-draft: true
+draft: false
 categories: java
 tags:
   - java
